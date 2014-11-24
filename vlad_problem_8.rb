@@ -44,7 +44,13 @@ number_as_a_string = "73167176531330624919225119674426574742355349194934
 71636269561882670428252483600823257530420752963450"
 
 def greatest_product_of_adjacent_digits(number_as_string, number_of_digits)
-  array_of_digits = number_as_string.split('').map! do |string_digit|
+  array_of_digits = number_as_string.split('')
+
+  array_of_digits.select! do |string_digit|
+    string_digit != "\n"
+  end
+
+  array_of_digits.map! do |string_digit|
     string_digit.to_i
   end
   greatest_product = 0
@@ -58,6 +64,7 @@ def greatest_product_of_adjacent_digits(number_as_string, number_of_digits)
     end
     starting_digit_index += 1
   end
+
   p winners
   return greatest_product
 end
